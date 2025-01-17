@@ -1,0 +1,8 @@
+{
+    "article": {
+        "title": "Automated Article",
+        "description": "An automated article created by API",
+        "body": "This article is being created by an API call, not using the UI of the application",
+        "tagList": []
+    }
+  }
