@@ -24,6 +24,10 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+Cypress.Commands.add("navigateWithoutLogin", ()=>{
+  cy.visit("/")
+})
+
 Cypress.Commands.add("logInToApplication", ()=>{
     cy.visit("/login")
     cy.get("[placeholder='Email']").type(Cypress.env("username"))
@@ -56,7 +60,7 @@ Cypress.Commands.add("loginThroughApi", () => {
   
   Cypress.Commands.add("deleteArticleViaApi", (userToken, slugId) => {
     cy.request({
-      url: Cypress.env("apiUrl")+"/articles/" + slugId,
+      url: Cypress.config("apiUrl")+"/articles/" + slugId,
       method: "DELETE",
       headers: {
         Authorization: "Token " + userToken,

@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 import theArticle from "../fixtures/anArticle.json"
 
-describe("Mocked API Tests", ()=>{
+describe("API Request test", ()=>{
     var slugId
     var userToken
     const apiUrl = Cypress.config("apiUrl")
@@ -14,7 +14,7 @@ describe("Mocked API Tests", ()=>{
         I will intercept this endpoint because it contains the JWT token that I will later need in the test
         */
         cy.intercept({method: "POST", path: "login"}).as("login")
-        cy.loginToApplication()
+        cy.logInToApplication()
     })
 
     it.only("Delete an article, but creating it through API", ()=>{

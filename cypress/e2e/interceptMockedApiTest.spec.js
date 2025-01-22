@@ -2,17 +2,17 @@
 import {topBarPage} from "../support/POM/topBarPage"
 import {articleCreationPage} from "../support/POM/articleCreationPage"
 
-describe("Working with APIs", ()=>{
+describe("Intercept and Mocked API Tests", ()=>{
   
   const apiUrl = Cypress.config("apiUrl")
-  const apiArticlesUrl = apiUrl+"/articles/"
+  const apiArticlesUrl = apiUrl+"/articles"
   const apiTagsUrl = apiUrl+"/tags"
 
     beforeEach("Loguearse", () =>{
         cy.loginThroughApi()
     })
 
-    it.only("Create an article and verify API is being called", ()=>{
+    it("Create an article and verify API is being called", ()=>{
         cy.intercept("POST",apiArticlesUrl).as("postArticle")
 
         //create an article
@@ -80,5 +80,4 @@ describe("Working with APIs", ()=>{
         //delete the article so the next time the test run it can be created again
         cy.contains("button", "Delete Article").click()
     })
-
 })

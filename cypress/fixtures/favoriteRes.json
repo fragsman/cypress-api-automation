@@ -1,0 +1,80 @@
+{
+    "article": {
+        "id": 11,
+        "slug": "mocked-article-1",
+        "title": "The moonshine",
+        "description": "How people react to the moon",
+        "body": "The mooon is fascinating. It brings you joy whenever you look at it and lots of people love watching it and taking pictures at night",
+        "createdAt": "2024-01-27T21:52:32.682Z",
+        "updatedAt": "2024-01-27T21:52:32.682Z",
+        "authorId": 1,
+        "tagList": [
+            "moon",
+            "photography"
+        ],
+        "author": {
+                "username": "Federico Pantaleone",
+                "bio": null,
+                "image": "https://storage.googleapis.com/bondar-academy-visuals/Android.png",
+                "following": false
+            },
+        "favoritedBy": [
+            {
+                "id": 3,
+                "email": "cytest@test.com",
+                "username": "CyTest",
+                "password": "$2a$10$yKBkKY1DHqpUg3I0Ts0HKer0bDYu6vYZ7cZllkbzq9RjFFNnOdcUK",
+                "image": "https://api.realworld.io/images/smiley-cyrus.jpeg",
+                "bio": "Dapifer ambulo tabella celer maiores.",
+                "demo": false
+            },
+            {
+                "id": 24,
+                "email": "pao.test@gmail.com",
+                "username": "pao",
+                "password": "$2a$10$1zQ5w1Xy4KcbFFdOjF2PB.j0UwY4IVlwD/jBpi10unKihtauimtI6",
+                "image": "https://api.realworld.io/images/smiley-cyrus.jpeg",
+                "bio": null,
+                "demo": false
+            },
+            {
+                "id": 28,
+                "email": "cypresscoursetest@test.mail.com",
+                "username": "cypresscoursetest",
+                "password": "$2a$10$ZsbpOgIZx9GxLXF6aBq8VOC4ynQ9Q2z5y3KEKteW71axk5HrAWuWi",
+                "image": "https://api.realworld.io/images/smiley-cyrus.jpeg",
+                "bio": null,
+                "demo": false
+            },
+            {
+                "id": 36,
+                "email": "wew@tes.com",
+                "username": "tes45644",
+                "password": "$2a$10$XpDzKMFboeNL7bmKIfyJue9KCc3nVQAl3GjGNL1FmYXi20B.0E5OG",
+                "image": "https://api.realworld.io/images/smiley-cyrus.jpeg",
+                "bio": null,
+                "demo": false
+            },
+            {
+                "id": 38,
+                "email": "gracemmora99@gmail.com",
+                "username": "gmora",
+                "password": "$2a$10$Uof4eBPQnYkZ4iw73TIoTOnNiGG2d38UZBNpj821FPUx9A6n8/hqC",
+                "image": "https://api.realworld.io/images/smiley-cyrus.jpeg",
+                "bio": null,
+                "demo": false
+            },
+            {
+                "id": 91,
+                "email": "EQEQW@TES.COM",
+                "username": "test4664",
+                "password": "$2a$10$O9HWgZAnuR5QjWGndQxP/.Zx69NfCg.xWvWfbeeJAluNpbi7etgNi",
+                "image": "https://api.realworld.io/images/smiley-cyrus.jpeg",
+                "bio": null,
+                "demo": false
+            }
+        ],
+        "favorited": true,
+        "favoritesCount": 6
+    }
+}

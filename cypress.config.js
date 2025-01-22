@@ -18,10 +18,12 @@ module.exports = defineConfig({
       password: "ronnie1234"
     },
 
-    retries: 1,
+    retries: 0,
     reporter: 'cypress-multi-reporters',
     reporterOptions: {
     configFile: 'reporter-config.json',
+    chromeWebSecurity: false,
+    experimentalModifyObstructiveThirdPartyCode: true,
   },
   },
 });
