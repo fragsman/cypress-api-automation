@@ -18,7 +18,10 @@ module.exports = defineConfig({
       password: "ronnie1234"
     },
 
-    retries: 0,
+    retries: {
+      runMode: 1,
+      openMode: 0
+    },
     reporter: 'cypress-multi-reporters',
     reporterOptions: {
     configFile: 'reporter-config.json',

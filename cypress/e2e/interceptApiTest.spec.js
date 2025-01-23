@@ -8,7 +8,8 @@ describe("Intercept, Mock and Assert 2", ()=>{
         cy.logInToApplication()
     })
 
-    it("Mock two articles, increase the likes counter and verify through Frontend", ()=>{            
+    //If I consider this test as flaky I can put a specific retries option regardless the cypress config
+    it("Mock two articles, increase the likes counter and verify through Frontend", {retries:1}, ()=>{        
         //I get MY mocked article, that has 5 fav count, when I click it should go to 6
         cy.contains("a[class='author']","Federico Pantaleone").parent().parent().find("button").then(button =>{
             cy.wrap(button).invoke("text").then(txt =>{
