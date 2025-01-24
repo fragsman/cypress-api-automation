@@ -1,0 +1,323 @@
+{
+  "stats": {
+    "suites": 4,
+    "tests": 5,
+    "passes": 4,
+    "pending": 0,
+    "failures": 1,
+    "testsRegistered": 5,
+    "passPercent": 80,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "start": "2025-01-24T20:33:22.760Z",
+    "end": "2025-01-24T20:33:59.805Z",
+    "duration": 37045
+  },
+  "results": [
+    {
+      "uuid": "de86ce9f-6960-4d1e-824a-7932a02b3a7c",
+      "title": "",
+      "fullFile": "cypress\\e2e\\interceptApiTest.spec.js",
+      "file": "cypress\\e2e\\interceptApiTest.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "7e6d38bc-3615-40dc-b06c-bd64c7f2178d",
+          "title": "Intercept, Mock and Assert 2",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Mock two articles, increase the likes counter and verify through Frontend",
+              "fullTitle": "Intercept, Mock and Assert 2 Mock two articles, increase the likes counter and verify through Frontend",
+              "timedOut": null,
+              "duration": 3419,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//I get MY mocked article, that has 5 fav count, when I click it should go to 6\ncy.contains(\"a[class='author']\", \"Federico Pantaleone\").parent().parent().find(\"button\").then(button => {\n  cy.wrap(button).invoke(\"text\").then(txt => {\n    expect(txt.trim()).to.eq(\"5\");\n  });\n});\ncy.fixture(\"articles\").then(file => {\n  const articleLink = file.articles[0].slug;\n  file.articles[0].favoritesCount = 6;\n  cy.intercept(\"POST\", \"https://conduit-api.bondaracademy.com/api/articles/\" + articleLink + \"/favorite\", file);\n});\ncy.contains(\"a[class='author']\", \"Federico Pantaleone\").parent().parent().find(\"button\").then(button => {\n  cy.wrap(button).click();\n  cy.wrap(button).invoke(\"text\").then(txt => {\n    expect(txt.trim()).to.eq(\"6\");\n  });\n});",
+              "err": {},
+              "uuid": "7c969e89-7118-4508-8744-af1ac192298e",
+              "parentUUID": "7e6d38bc-3615-40dc-b06c-bd64c7f2178d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7c969e89-7118-4508-8744-af1ac192298e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3419,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "20edb818-be6b-4565-a2a5-4a959c126b15",
+          "title": "Intercept, Mock and Assert ex.2",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Inject mocked tags and verify them through the Frontend",
+              "fullTitle": "Intercept, Mock and Assert ex.2 Inject mocked tags and verify them through the Frontend",
+              "timedOut": null,
+              "duration": 1358,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture(\"mockedTags.json\").then(mockedTags => {\n  cy.get(\".tag-list\").find(\"a\").each(tag => {\n    cy.wrap(tag).invoke(\"text\").then(txt => {\n      expect(mockedTags.tags).contains(txt.trim());\n    });\n  });\n});",
+              "err": {},
+              "uuid": "9fc33e65-3af6-4cae-af78-87e559455c80",
+              "parentUUID": "20edb818-be6b-4565-a2a5-4a959c126b15",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "9fc33e65-3af6-4cae-af78-87e559455c80"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1358,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "f4253809-f348-40e5-9c92-64434e98d6ee",
+      "title": "",
+      "fullFile": "cypress\\e2e\\interceptMockedApiTest.spec.js",
+      "file": "cypress\\e2e\\interceptMockedApiTest.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "aa630151-cdb0-42e5-b879-a3190367f7b2",
+          "title": "Intercept and Mocked API Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify tags are shown correctly",
+              "fullTitle": "Intercept and Mocked API Tests Verify tags are shown correctly",
+              "timedOut": null,
+              "duration": 2493,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let expectedTags;\ncy.intercept(\"GET\", apiTagsUrl).as(\"tags\");\ncy.wait(\"@tags\").then(intercept => {\n  expectedTags = intercept.response.body.tags;\n});\ncy.get(\".tag-list\").find(\"a\").then(tags => {\n  expect(tags.length).to.eq(expectedTags.length);\n  cy.wrap(tags).each(tag => {\n    cy.wrap(tag).invoke(\"text\").then(txt => {\n      expect(expectedTags).contains(txt.trim());\n    });\n  });\n});",
+              "err": {},
+              "uuid": "2a053289-2a0c-4b3f-b19c-cb53204e89d5",
+              "parentUUID": "aa630151-cdb0-42e5-b879-a3190367f7b2",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "2a053289-2a0c-4b3f-b19c-cb53204e89d5"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2493,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "3c5ac48e-4c04-4056-849d-c11904ac3815",
+      "title": "",
+      "fullFile": "cypress\\e2e\\typeTests.spec.js",
+      "file": "cypress\\e2e\\typeTests.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "075cba41-4a1e-4bf2-a104-263d4c7fbe93",
+          "title": "Typing tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Using hotkeys",
+              "fullTitle": "Typing tests Using hotkeys",
+              "timedOut": null,
+              "duration": 7040,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "//In this page pressing Ctrl+K will open a search box. I want to simulate that\ncy.visit(\"https://docs.cypress.io/api/commands/type\");\ncy.wait(5000);\n//Option 1\ncy.get(\"body\").type(\"{ctrl+k}\");\ncy.get(\".DocSearch-Input\").type(\"intercept\");\ncy.get(\"#docsearch-item-0\").focus().click();\n//Option 2\n//cy.get('body').trigger('keydown', { ctrlKey: true, keyCode: 75}) //75 = K\n//Option 3\n//cy.get('body').trigger('keydown', { keyCode: 17, release : false}) //17 = Ctrl\n//cy.get('body').trigger('keydown', { keyCode: 75, release : false}) //75 = K\n//Option 4\n//cy.get('body').trigger('keydown', { eventConstructor: \"KeyboardEvent\", ctrlKey: true, keyCode: 75}) //75 = K\n//Option 5\n//cy.get('body').trigger('keydown', { eventConstructor: \"KeyboardEvent\", keyCode: 17, release : false}) //17 = Ctrl\n//cy.get('body').trigger('keydown', { eventConstructor: \"KeyboardEvent\", keyCode: 75}) //75 = K",
+              "err": {
+                "message": "CypressError: `cy.focus()` can only be called on a valid focusable element. Your subject is a: `<li class=\"DocSearch-Hit\" id=\"docsearch-item-0\" role=\"option\" aria-selected=\"true\">...</li>`\n\nhttps://on.cypress.io/focus",
+                "estack": "CypressError: `cy.focus()` can only be called on a valid focusable element. Your subject is a: `<li class=\"DocSearch-Hit\" id=\"docsearch-item-0\" role=\"option\" aria-selected=\"true\">...</li>`\n\nhttps://on.cypress.io/focus\n    at Context.focus (https://docs.cypress.io/__cypress/runner/cypress_runner.js:112429:70)\n    at wrapped (https://docs.cypress.io/__cypress/runner/cypress_runner.js:137197:19)\nFrom Your Spec Code:\n    at captureUserInvocationStack (https://docs.cypress.io/__cypress/runner/cypress_runner.js:138199:94)\n    at Assertion.assert (https://docs.cypress.io/__cypress/runner/cypress_runner.js:138227:9)\n    at Assertion.<anonymous> (https://docs.cypress.io/__cypress/runner/cypress_runner.js:138169:25)\n    at Assertion.overwritingPropertyGetter (https://docs.cypress.io/__cypress/runner/cypress_runner.js:77985:37)\nat Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (https://docs.cypress.io/__cypress/runner/cypress_runner.js:77851:22)\n    at exists (https://docs.cypress.io/__cypress/runner/cypress_runner.js:142048:26)\n    at elExists (https://docs.cypress.io/__cypress/runner/cypress_runner.js:142063:10)\n    at ensureExistence (https://docs.cypress.io/__cypress/runner/cypress_runner.js:142244:22)\n    at onFailFn (https://docs.cypress.io/__cypress/runner/cypress_runner.js:142273:53)",
+                "diff": null
+              },
+              "uuid": "e3088830-1ed3-4b30-b8de-19a94fefd30b",
+              "parentUUID": "075cba41-4a1e-4bf2-a104-263d4c7fbe93",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "e3088830-1ed3-4b30-b8de-19a94fefd30b"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 7040,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "bc865757-6dd6-4b8f-a686-6df4c94d4612",
+      "title": "",
+      "fullFile": "cypress\\e2e\\apiRequestTest.spec.js",
+      "file": "cypress\\e2e\\apiRequestTest.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "36430b92-a019-4110-8968-ea732cedb421",
+          "title": "API Request test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Delete an article, but creating it through API",
+              "fullTitle": "API Request test Delete an article, but creating it through API",
+              "timedOut": null,
+              "duration": 5897,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.wait(\"@login\").then(loginCall => {\n  userToken = loginCall.response.body.user.token;\n  cy.request({\n    url: apiArticlesUrl,\n    headers: {\n      \"Content-Type\": \"application/json\",\n      \"Authorization\": \"Token \" + userToken\n    },\n    method: \"POST\",\n    body: _anArticle.default\n  }).then(response => {\n    expect(response.status).to.eq(201);\n    slugId = response.body.article.slug;\n  });\n  cy.contains(\"h1\", _anArticle.default.article.title).click();\n  cy.intercept(\"DELETE\", apiArticlesUrl + \"/*\").as(\"deleteArti\");\n  cy.contains(\"button\", \"Delete Article\").click();\n  cy.wait(\"@deleteArti\").then(xhr => {\n    expect(xhr.response.statusCode).to.eq(204);\n  });\n});",
+              "err": {},
+              "uuid": "92b69d2c-ed2d-45c1-b1eb-42efaf8f88db",
+              "parentUUID": "36430b92-a019-4110-8968-ea732cedb421",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "92b69d2c-ed2d-45c1-b1eb-42efaf8f88db"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5897,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

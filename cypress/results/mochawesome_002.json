@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-01-24T20:33:37.411Z",
+    "end": "2025-01-24T20:33:39.954Z",
+    "duration": 2543,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "f4253809-f348-40e5-9c92-64434e98d6ee",
+      "title": "",
+      "fullFile": "cypress\\e2e\\interceptMockedApiTest.spec.js",
+      "file": "cypress\\e2e\\interceptMockedApiTest.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "aa630151-cdb0-42e5-b879-a3190367f7b2",
+          "title": "Intercept and Mocked API Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify tags are shown correctly",
+              "fullTitle": "Intercept and Mocked API Tests Verify tags are shown correctly",
+              "timedOut": null,
+              "duration": 2493,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let expectedTags;\ncy.intercept(\"GET\", apiTagsUrl).as(\"tags\");\ncy.wait(\"@tags\").then(intercept => {\n  expectedTags = intercept.response.body.tags;\n});\ncy.get(\".tag-list\").find(\"a\").then(tags => {\n  expect(tags.length).to.eq(expectedTags.length);\n  cy.wrap(tags).each(tag => {\n    cy.wrap(tag).invoke(\"text\").then(txt => {\n      expect(expectedTags).contains(txt.trim());\n    });\n  });\n});",
+              "err": {},
+              "uuid": "2a053289-2a0c-4b3f-b19c-cb53204e89d5",
+              "parentUUID": "aa630151-cdb0-42e5-b879-a3190367f7b2",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "2a053289-2a0c-4b3f-b19c-cb53204e89d5"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2493,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

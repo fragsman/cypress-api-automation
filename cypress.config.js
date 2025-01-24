@@ -24,9 +24,7 @@ module.exports = defineConfig({
     },
     reporter: 'cypress-multi-reporters',
     reporterOptions: {
-    configFile: 'reporter-config.json',
-    chromeWebSecurity: false,
-    experimentalModifyObstructiveThirdPartyCode: true,
-  },
+      configFile: 'reporter-config.json'
+    },
   },
 });

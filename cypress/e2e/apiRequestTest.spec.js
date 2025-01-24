@@ -17,7 +17,7 @@ describe("API Request test", ()=>{
         cy.logInToApplication()
     })
 
-    it.only("Delete an article, but creating it through API", ()=>{
+    it("Delete an article, but creating it through API", ()=>{
         cy.wait("@login").then(loginCall =>{
             userToken = loginCall.response.body.user.token
             cy.request({

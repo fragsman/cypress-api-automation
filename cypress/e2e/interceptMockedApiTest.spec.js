@@ -29,7 +29,7 @@ describe("Intercept and Mocked API Tests", ()=>{
         cy.contains("button", "Delete Article").click()
     })
 
-    it("Verify tags are shown correctly", ()=>{
+    it.only("Verify tags are shown correctly", ()=>{
         let expectedTags
         cy.intercept("GET", apiTagsUrl).as("tags")
         

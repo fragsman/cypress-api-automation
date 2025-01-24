@@ -1,0 +1,145 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-01-24T20:33:30.786Z",
+    "end": "2025-01-24T20:33:35.626Z",
+    "duration": 4840,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "de86ce9f-6960-4d1e-824a-7932a02b3a7c",
+      "title": "",
+      "fullFile": "cypress\\e2e\\interceptApiTest.spec.js",
+      "file": "cypress\\e2e\\interceptApiTest.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "7e6d38bc-3615-40dc-b06c-bd64c7f2178d",
+          "title": "Intercept, Mock and Assert 2",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Mock two articles, increase the likes counter and verify through Frontend",
+              "fullTitle": "Intercept, Mock and Assert 2 Mock two articles, increase the likes counter and verify through Frontend",
+              "timedOut": null,
+              "duration": 3419,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//I get MY mocked article, that has 5 fav count, when I click it should go to 6\ncy.contains(\"a[class='author']\", \"Federico Pantaleone\").parent().parent().find(\"button\").then(button => {\n  cy.wrap(button).invoke(\"text\").then(txt => {\n    expect(txt.trim()).to.eq(\"5\");\n  });\n});\ncy.fixture(\"articles\").then(file => {\n  const articleLink = file.articles[0].slug;\n  file.articles[0].favoritesCount = 6;\n  cy.intercept(\"POST\", \"https://conduit-api.bondaracademy.com/api/articles/\" + articleLink + \"/favorite\", file);\n});\ncy.contains(\"a[class='author']\", \"Federico Pantaleone\").parent().parent().find(\"button\").then(button => {\n  cy.wrap(button).click();\n  cy.wrap(button).invoke(\"text\").then(txt => {\n    expect(txt.trim()).to.eq(\"6\");\n  });\n});",
+              "err": {},
+              "uuid": "7c969e89-7118-4508-8744-af1ac192298e",
+              "parentUUID": "7e6d38bc-3615-40dc-b06c-bd64c7f2178d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7c969e89-7118-4508-8744-af1ac192298e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3419,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "20edb818-be6b-4565-a2a5-4a959c126b15",
+          "title": "Intercept, Mock and Assert ex.2",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Inject mocked tags and verify them through the Frontend",
+              "fullTitle": "Intercept, Mock and Assert ex.2 Inject mocked tags and verify them through the Frontend",
+              "timedOut": null,
+              "duration": 1358,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture(\"mockedTags.json\").then(mockedTags => {\n  cy.get(\".tag-list\").find(\"a\").each(tag => {\n    cy.wrap(tag).invoke(\"text\").then(txt => {\n      expect(mockedTags.tags).contains(txt.trim());\n    });\n  });\n});",
+              "err": {},
+              "uuid": "9fc33e65-3af6-4cae-af78-87e559455c80",
+              "parentUUID": "20edb818-be6b-4565-a2a5-4a959c126b15",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "9fc33e65-3af6-4cae-af78-87e559455c80"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1358,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
