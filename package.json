@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "mochawesome:merge": "npx mochawesome-merge 'cypress/results/*.json' > mochawesome.json && npx marge mochawesome.json",
     "junit:merge": "npx junit-merge -d cypress/results -o cypress/results/result.xml",
-    "delete:reports": "del cypress\\results\\* /f /q && del mochawesome-report\\* /f /q && del mochawesome-report\\assets\\* /f /q || true",
+    "delete:reports": "del cypress\\results\\* /f /q && del mochawesome-report\\* /f /q && del mochawesome-report\\assets\\* /f /q || exit 0",
     "prereport": "npm run delete:reports",
     "report": "cypress run --reporter cypress-multi-reporters --reporter-options configFile=reporter-config.json",
     "cypress:run": "npx cypress run || exit 0",

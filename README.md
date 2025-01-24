@@ -13,6 +13,9 @@ Cypress tests used in Cypress course on Udemy. The app is hosted in the Web, fro
 - Install JunitMerge. In a new 📟 type `npm install -g junit-merge`
 - Install JunitMerge. In a new 📟 type `npm install del`
 
+### Running tests
+- You can either run tests with `npx cypress open` and visually analyze the test in Cypress Window, or
+- You can run the command `npm run cypress:e2e`. It will run headlessly and a report will be generated in _mochawesome-report_ folder.
 
 _**Reference**_
 📟 => Terminal
