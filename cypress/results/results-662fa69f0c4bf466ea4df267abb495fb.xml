@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="2.543" tests="1" failures="0">
-  <testsuite name="Root Suite" timestamp="2025-01-24T20:33:37" tests="0" file="cypress\e2e\interceptMockedApiTest.spec.js" time="0.000" failures="0">
-  </testsuite>
-  <testsuite name="Intercept and Mocked API Tests" timestamp="2025-01-24T20:33:37" tests="1" time="2.539" failures="0">
-    <testcase name="Intercept and Mocked API Tests Verify tags are shown correctly" time="2.493" classname="Verify tags are shown correctly">
-    </testcase>
-  </testsuite>
-</testsuites>
